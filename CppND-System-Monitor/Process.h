@@ -1,4 +1,5 @@
 #include <string>
+#include "ProcessParser.h"
 
 using namespace std;
 /*
@@ -46,5 +47,5 @@ string Process::getProcess(){
     this->upTime = ProcessParser::getProcUpTime(this->pid);
     this->cpu = ProcessParser::getCpuPercent(this->pid);
 
-    return (this->pid + "   " + //TODO: finish the string! this->user + "   "+ mem...cpu...upTime...;
+    return this->pid + "   " ;//TODO: finish the string! this->user + "   "+ mem...cpu...upTime...;
 }
