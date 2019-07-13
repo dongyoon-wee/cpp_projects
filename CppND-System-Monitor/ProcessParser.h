@@ -163,6 +163,8 @@ bool ProcessParser::isPidExisting(string pid) {
 		if(dirp->d_name == pid)
 			return true;
 	}
+	if(closedir(dir))
+        throw std::runtime_error(std::strerror(errno));
 	return false;
 }
 
