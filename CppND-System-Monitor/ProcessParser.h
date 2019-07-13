@@ -154,18 +154,8 @@ vector<string> ProcessParser::getPidList() {
 }
 
 bool ProcessParser::isPidExisting(string pid) {
-	DIR* dir;
-	if(!(dir = opendir("/proc")))
-		throw std::runtime_error(std::strerror(errno));
-	while (dirent* dirp = readdir(dir)) {
-		if(dirp->d_type != DT_DIR)
-			continue;
-		if(dirp->d_name == pid)
-			return true;
-	}
-	if(closedir(dir))
-        throw std::runtime_error(std::strerror(errno));
-	return false;
+	vector<string> pidList = getPidList();
+	return std::find(pidList.begin(), pidList.end(), pid) != pidList.end();
 }
 
 string ProcessParser::getCmd(string pid) {
