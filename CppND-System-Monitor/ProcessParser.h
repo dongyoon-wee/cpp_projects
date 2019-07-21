@@ -90,24 +90,6 @@ string ProcessParser::getCpuPercent(string pid) {
 	}
 	stream.close();
 	return to_string(-1);
-	/*
-	string str = line;
-	istringstream buf(str);
-	istream_iterator<string> beg(buf), end;
-	vector<string> values(beg, end);
-
-	float utime = stof(ProcessParser::getProcUpTime(pid));
-	float stime = stof(values[14]);
-	float cutime = stof(values[15]);
-	float cstime = stof(values[16]);
-	float starttime = stof(values[21]);
-	float uptime = ProcessParser::getSysUpTime();
-	float freq = sysconf(_SC_CLK_TCK);
-	float total_time = utime + stime + cutime + cstime;
-	float seconds = uptime - (starttime/freq);
-	result = 100.0*((total_time/freq)/seconds);
-	return to_string(result);
-	*/
 }
 
 string ProcessParser::getProcUpTime(string pid) {
@@ -334,7 +316,7 @@ int ProcessParser::getTotalNumberOfProcesses()
 {
     string line;
     int result = 0;
-    string name = "processes:";
+    string name = "processes";
     ifstream stream = Util::getStream((Path::basePath() + Path::statPath()));
 	while (std::getline(stream, line)) {
 		if (line.compare(0, name.size(), name) == 0) {
@@ -344,15 +326,15 @@ int ProcessParser::getTotalNumberOfProcesses()
             result += stoi(values[1]);
 			break;
 		}
-	return result;
 	}
+    return result;
 }
 
 int ProcessParser::getNumberOfRunningProcesses()
 {
     string line;
     int result = 0;
-    string name = "procs_running:";
+    string name = "procs_running";
     ifstream stream = Util::getStream((Path::basePath() + Path::statPath()));
 	while (std::getline(stream, line)) {
 		if (line.compare(0, name.size(), name) == 0) {
