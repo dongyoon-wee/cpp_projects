@@ -1,2 +1,5 @@
 # Pycharm editor settings
 .idea
+
+# Intermediate executable files
+a.out
