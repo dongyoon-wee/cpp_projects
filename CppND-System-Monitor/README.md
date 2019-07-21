@@ -2,6 +2,8 @@
 
 System Monitor Project in the C++ OOP course. 
 
+![screenshot_example](screenshot_example.png "Running example on linux")
+
 ## To setup and run:
 
 1. Install `ncurses` package
