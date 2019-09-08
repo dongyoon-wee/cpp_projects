@@ -20,3 +20,5 @@ last-compiled version. Adjust your code to resolve compiler errors and try again
 $ ./make
 $ ./compiled
 ```
+# Reference
+[Garbage Collector repository from Udacity C++ Nanodegree course](https://github.com/udacity/CppND-Garbage-Collector)
